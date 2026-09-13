@@ -96,7 +96,6 @@
     </div>
   </section>
 
-  <section class="chords" id="chords"></section>
 
   <p class="note" id="info"></p>
 </main>
@@ -124,7 +123,7 @@
   const startBtn = $('startBtn'), status = $('status'), clock = $('clock'), info = $('info');
   const inSel = $('inSel'), outSel = $('outSel'), outField = $('outField');
   const vol = $('vol'), volOut = $('volOut');
-  const chordsEl = $('chords');
+  const chordsEl = document.createElement('div'); // las tarjetas de acorde ya no se muestran; quedan fuera del documento
   const cards = {};
   for (const c of CHORDS) {
     const d = document.createElement('div'); d.className = 'chord'; d.id = 'card-' + c.id;
