@@ -78,7 +78,7 @@
     </div>
     <div class="controls"><button class="primary" id="startBtn">Iniciar</button></div>
     <div class="clock" id="clock"></div>
-    <div class="status" id="status">Elige la entrada, baja el volumen y pulsa "Iniciar". El ciclo parte por los treses.</div>
+    <div class="status" id="status"></div>
   </section>
 
   <section class="panel">
@@ -227,7 +227,6 @@
     await listDevices();
     running = true; cycleStart = ctx.currentTime;
     startBtn.textContent = 'Detener'; startBtn.classList.add('running'); startBtn.classList.remove('primary'); startBtn.disabled = false;
-    status.textContent = 'Ciclo en marcha. El acorde ambiental queda antes y después de la guitarra.';
     schedule(0);
     tick();
   }
@@ -244,7 +243,6 @@
     setTimeout(closeInput, (STOP_RELEASE + 0.3) * 1000);
     for (const c of CHORDS) { cards[c.id].classList.remove('on'); cards[c.id].querySelector('.bar i').style.width = '0'; c.started = null; }
     startBtn.textContent = 'Iniciar'; startBtn.classList.remove('running'); startBtn.classList.add('primary');
-    status.textContent = 'Detenido. Al volver a iniciar, el ciclo parte de nuevo por los treses.';
     clock.textContent = '';
   }
   startBtn.addEventListener('click', () => running ? stop() : start());
